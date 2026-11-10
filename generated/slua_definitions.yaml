@@ -8,6 +8,19 @@ version: 1.0.0
 base-classes:
 - name: quaternion
   comment: A set of four float values. Used to represent rotations and orientations.
+  properties:
+  - name: x
+    type: number
+    comment: X component of the rotation/quaternion.
+  - name: "y"
+    type: number
+    comment: Y component of the rotation/quaternion.
+  - name: z
+    type: number
+    comment: Z component of the rotation/quaternion.
+  - name: s
+    type: number
+    comment: S component of the rotation/quaternion. Equivalent to the W component in other notations.
   methods:
   - name: __add
     parameters:
@@ -47,26 +60,8 @@ base-classes:
     parameters:
     - name: self
     return-type: string
-  properties:
-  - name: x
-    type: number
-    comment: X component of the rotation/quaternion.
-  - name: "y"
-    type: number
-    comment: Y component of the rotation/quaternion.
-  - name: z
-    type: number
-    comment: Z component of the rotation/quaternion.
-  - name: s
-    type: number
-    comment: S component of the rotation/quaternion. Equivalent to the W component in other notations.
 - name: uuid
   comment: 'A 128‑bit unique identifier formatted as 36 hexadecimal characters (8‑4‑4‑4‑12), e.g. "A822FF2B-FF02-461D-B45D-DCD10A2DE0C2".'
-  methods:
-  - name: __tostring
-    parameters:
-    - name: self
-    return-type: string
   properties:
   - name: istruthy
     comment: Returns true if the UUID is not the null UUID (all zeros).
@@ -74,8 +69,23 @@ base-classes:
   - name: bytes
     comment: Returns the raw 16-byte binary string of the UUID.
     type: string
+  methods:
+  - name: __tostring
+    parameters:
+    - name: self
+    return-type: string
 - name: vector
   comment: A set of three float values. Used to represent colors (RGB), positions, directions, and velocities.
+  properties:
+  - name: x
+    type: number
+    comment: "X coordinate component of the vector. Typically represents red color, forward position, or pitch."
+  - name: "y"
+    type: number
+    comment: "Y coordinate component of the vector. Typically represents green color, left/right position, or roll."
+  - name: z
+    type: number
+    comment: "Z coordinate component of the vector. Typically represents blue color, altitude/upward position, or yaw."
   methods:
   - name: __add
     comment: Native component-wise addition
@@ -130,20 +140,9 @@ base-classes:
     parameters:
     - name: self
     return-type: string
-  properties:
-  - name: x
-    type: number
-    comment: "X coordinate component of the vector. Typically represents red color, forward position, or pitch."
-  - name: "y"
-    type: number
-    comment: "Y coordinate component of the vector. Typically represents green color, left/right position, or roll."
-  - name: z
-    type: number
-    comment: "Z coordinate component of the vector. Typically represents blue color, altitude/upward position, or yaw."
 - name: DetectedEvent
   comment: Event detection class providing access to detected object/avatar information
   # auto-generated from lsl_definitions.yaml
-  methods: []
   properties:
   - name: index
     type: number
@@ -154,6 +153,7 @@ base-classes:
   - name: canAdjustDamage
     type: boolean
     comment: "Returns true if the detected object or avatar can have its damage adjusted."
+  methods: []
 type-aliases:
 - name: rotation
   comment: '''rotation'' is an alias for ''quaternion'''
